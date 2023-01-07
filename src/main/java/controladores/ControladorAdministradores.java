@@ -14,10 +14,10 @@ import modelos.Administrador;
  *
  * @author Lida
  */
-public class ControladorAdministrador {
+public class ControladorAdministradores {
     private File archivo;
     
-    public ControladorAdministrador() {
+    public ControladorAdministradores() {
         this.archivo = new File("db/admins.txt");
         if (!this.archivo.exists()) {
             try {
@@ -38,10 +38,10 @@ public class ControladorAdministrador {
             br = new BufferedReader(fileReader);
             String linea = br.readLine();
             while (linea != null) {
-                String cedulaEncontrada = linea.split(",")[0];
+                String cedulaEncontrada = linea.split(",")[0];                
                 if (cedulaEncontrada.equals(cedula)) {
                     String[] datosPaciente = linea.split(",");
-                    administrador = new Administrador(datosPaciente[0], datosPaciente[1], Integer.parseInt(datosPaciente[2]), datosPaciente[3], datosPaciente[4]);
+                    administrador = new Administrador(datosPaciente[0], datosPaciente[1], Integer.parseInt(datosPaciente[2]), datosPaciente[3], datosPaciente[4]);                    
                     return administrador;
                 }
                 linea = br.readLine();

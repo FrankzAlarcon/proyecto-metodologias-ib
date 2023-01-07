@@ -47,7 +47,7 @@ public class ControladorMedicos {
                 String cedulaEncontrada = linea.split(",")[0];
                 if (cedulaEncontrada.equals(cedula)) {
                     String[] datosPaciente = linea.split(",");
-                    medico = new Medico(datosPaciente[0], datosPaciente[1], Integer.parseInt(datosPaciente[2]), datosPaciente[3], datosPaciente[4]);
+                    medico = new Medico(datosPaciente[0], datosPaciente[1], Integer.parseInt(datosPaciente[2]), datosPaciente[3], datosPaciente[4], datosPaciente[5]);
                     return medico;
                 }
                 linea = br.readLine();
@@ -60,6 +60,34 @@ public class ControladorMedicos {
             ControladorBuffers.cerrarBuffers(fileReader, br);
         }
         return medico;
+    }
+    
+    public ArrayList<Medico> obtenerMedicosPorEspecialidad(String especialidadSeleccionada) {
+        FileReader fileReader =  null;
+        BufferedReader br = null;
+        ArrayList<Medico> medicos = new ArrayList<Medico>();
+        try {
+            fileReader =new FileReader(this.archivo);
+            br = new BufferedReader(fileReader);
+            String linea = br.readLine();
+            Medico medico;
+            while (linea != null) {
+                String especialidad = linea.split(",")[3];
+                if (especialidad.equals(especialidadSeleccionada)) {
+                    String[] datosPaciente = linea.split(",");
+                    medico = new Medico(datosPaciente[0], datosPaciente[1], Integer.parseInt(datosPaciente[2]), datosPaciente[3], datosPaciente[4], datosPaciente[5]);
+                    medicos.add(medico);
+                }
+                linea = br.readLine();
+            }            
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            ControladorBuffers.cerrarBuffers(fileReader, br);
+        }
+        return medicos;
     }
     
     public void registrarMedico(Medico medico) {
@@ -100,7 +128,7 @@ public class ControladorMedicos {
             while (linea != null) {
                 datosMedico = linea.split(",");
                 if (!medico.getCedula().equals(datosMedico[0])) {
-                    medicoEncontrado = new Medico(datosMedico[0], datosMedico[1], Integer.parseInt(datosMedico[2]), datosMedico[3], datosMedico[4]);
+                    medicoEncontrado = new Medico(datosMedico[0], datosMedico[1], Integer.parseInt(datosMedico[2]), datosMedico[3], datosMedico[4], datosMedico[5]);
                     medicos.add(medicoEncontrado);
                 }
                 linea = br.readLine();

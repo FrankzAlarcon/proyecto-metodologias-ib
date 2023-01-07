@@ -19,15 +19,17 @@ public class Medico {
     private String cedula;
     private String nombre;
     private int edad;
+    private String especialidad;
     private String correoElectronico;
-    private String contrasenia;
+    private String contrasenia;    
 
     private ControladorMedicos medicoPersistencia;
 
-    public Medico(String cedula, String nombre, int edad, String correoElectronico, String contrasenia) {
+    public Medico(String cedula, String nombre, int edad, String especialidad, String correoElectronico, String contrasenia) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.edad = edad;
+        this.especialidad = especialidad;
         this.correoElectronico = correoElectronico;
         this.contrasenia = contrasenia;
         this.medicoPersistencia = new ControladorMedicos();
@@ -50,9 +52,13 @@ public class Medico {
         return cedula;
     }
 
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
     @Override
     public String toString() {
-        return cedula + "," + nombre + "," + edad + "," + correoElectronico + "," + contrasenia;
+        return cedula + "," + nombre + "," + edad + "," + especialidad + ","+ correoElectronico + "," + contrasenia;
     }
 
 }

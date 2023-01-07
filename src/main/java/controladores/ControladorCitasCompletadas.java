@@ -38,14 +38,14 @@ public class ControladorCitasCompletadas {
         }
     }
 
-    /*public ArrayList<CitaCompletada> recuperarCitas() {
+    public ArrayList<CitaCompletada> obtenerCitasCompletadas() {
         FileReader fileReader = null;
         BufferedReader br = null;
 
         ArrayList<CitaCompletada> citas = new ArrayList<CitaCompletada>();
 
-        GestorMedicos gestorMedicos = new GestorMedicos();
-        GestorPacientes gestorPacientes = new GestorPacientes();
+        ControladorMedicos gestorMedicos = new ControladorMedicos();
+        ControladorPacientes gestorPacientes = new ControladorPacientes();
         try {
             fileReader = new FileReader(this.archivo);
             br = new BufferedReader(fileReader);
@@ -80,8 +80,8 @@ public class ControladorCitasCompletadas {
         BufferedReader br = null;
         CitaCompletada cita = null;
 
-        GestorMedicos gestorMedicos = new GestorMedicos();
-        GestorPacientes gestorPacientes = new GestorPacientes();
+        ControladorMedicos gestorMedicos = new ControladorMedicos();
+        ControladorPacientes gestorPacientes = new ControladorPacientes();
         try {
             fileReader = new FileReader(this.archivo);
             br = new BufferedReader(fileReader);
@@ -110,7 +110,7 @@ public class ControladorCitasCompletadas {
             ControladorBuffers.cerrarBuffers(fileReader, br);
         }
         return cita;
-    }*/
+    }
 
     public void registrarCita(CitaCompletada cita) {
         FileWriter fileWriter = null;
@@ -132,7 +132,7 @@ public class ControladorCitasCompletadas {
         }
     }
 
-    /*public void eliminarCita(CitaCompletada cita) {
+    public void eliminarCita(CitaCompletada cita) {
         FileReader fileReader = null;
         BufferedReader br = null;
 
@@ -172,5 +172,5 @@ public class ControladorCitasCompletadas {
         } finally {
             ControladorBuffers.cerrarBuffers(fileWriter, bw, fileReader, br);
         }
-    }*/
+    }
 }

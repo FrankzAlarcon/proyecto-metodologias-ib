@@ -65,6 +65,10 @@ public class Cita {
     public String toString() {
         return id + "," + fecha.toString() + "," + especialidad + "," + descripcion + "," + medico.getCedula() + "," + paciente.getCedula();
     }
+    
+    public String completeToString() {
+        return id + "," + fecha.toString() + "," + especialidad + "," + descripcion + "\n\t" + medico.toString() + "\n\t" + paciente.toString();
+    }
 
     public String getId() {
         return this.id;

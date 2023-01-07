@@ -9,7 +9,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import controladores.ControladorAdministrador;
+import controladores.ControladorAdministradores;
+import controladores.ControladorMedicos;
 
 /**
  *
@@ -17,30 +18,50 @@ import controladores.ControladorAdministrador;
  */
 public class Login {
 
-    private String usuario; // El usuario sera la cedula
+    private String cedula; // El usuario sera la cedula
     private String contrasenia;
     private String tipoUsuario;
 
-    private ControladorAdministrador adminPersistencia = new ControladorAdministrador();
+    private ControladorAdministradores controladorAdministradores;
+    private ControladorMedicos controladorMedicos;
     
     
     public Login(String usuario, String contrasenia) {
-        this.usuario = usuario;
+        this.cedula = usuario;
         this.contrasenia = contrasenia;
+        this.controladorAdministradores = new ControladorAdministradores();
+        this.controladorMedicos = new ControladorMedicos();
     }
 
-    public boolean validarCredenciales() {
-        if (usuario.equals("") || contrasenia.equals("")) {
-            System.out.println("Credenciales erroneas");
+    public boolean validarCredenciales(String role) {
+        if (cedula.equals("") || contrasenia.equals("")) {
+            System.out.println("Credenciales incorrectas");
             return false;
-        } else {
-            Administrador admin = adminPersistencia.obtenerAdministrador(usuario);
+        }
+        if (role == "Admin") {
+            Administrador admin = controladorAdministradores.obtenerAdministrador(cedula);            
             if (admin == null) {
                 System.out.println("Acceso Denegado");
                 return false;
             }
-            boolean esUsuarioCorrecto = admin.getCedula().equals(usuario);
+            boolean esUsuarioCorrecto = admin.getCedula().equals(cedula);
             boolean esContraseniaCorrecta = admin.getContrasenia().equals(contrasenia);
+            if ( esUsuarioCorrecto && esContraseniaCorrecta) {
+                System.out.println("Acceso Exitoso");
+                return true;
+            } else {
+                System.out.println("Acceso Denegado");
+                return false;
+            }   
+        }
+        if (role == "Medico") {
+            Medico medico = controladorMedicos.obtenerMedico(cedula);
+            if (medico == null) {
+                System.out.println("Acceso Denegado");
+                return false;
+            }
+            boolean esUsuarioCorrecto = medico.getCedula().equals(cedula);
+            boolean esContraseniaCorrecta = medico.getContrasenia().equals(contrasenia);
             if ( esUsuarioCorrecto && esContraseniaCorrecta) {
                 System.out.println("Acceso Exitoso");
                 return true;
@@ -49,6 +70,7 @@ public class Login {
                 return false;
             }
         }
+        return false;
     }
     
 }
