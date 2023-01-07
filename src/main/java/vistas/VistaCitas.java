@@ -36,7 +36,7 @@ public class VistaCitas {
     public void listarCitas() {
         ArrayList<Cita> citas = controladorCitas.obtenerCitas();
         citas.forEach(cita -> {
-            cita.completeToString();
+            System.out.println(cita.completeToString());
         });
     }
     
