@@ -50,4 +50,9 @@ public class Administrador {
     public String getContrasenia() {
         return contrasenia;
     }
+
+    @Override
+    public String toString() {
+        return cedula + "," + nombre + "," + edad + "," + correoElectronico + "," + contrasenia;
+    }
 }

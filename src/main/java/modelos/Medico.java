@@ -56,6 +56,11 @@ public class Medico {
         return contrasenia;
     }
 
+    public String getEspecialidad() {
+        return especialidad;
+    }
+    
+
     @Override
     public String toString() {
         return cedula + "," + nombre + "," + edad + "," + especialidad + ","+ correoElectronico + "," + contrasenia;
