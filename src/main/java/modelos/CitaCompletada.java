@@ -63,5 +63,9 @@ public class CitaCompletada {
     public Medico getMedico() {
         return medico;
     }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
     
 }

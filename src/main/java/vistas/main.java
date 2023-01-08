@@ -40,7 +40,6 @@ public class main {
                 vistaMedico.opcionesMedico();
             }
         }        
-        
     }
     
 }

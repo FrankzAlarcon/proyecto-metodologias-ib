@@ -37,8 +37,7 @@ public class VistaAdministrador {
                 administracionPacientes();
                 break;
             default:
-                System.out.println("Saliendo del sistema...");
-                
+                System.out.println("Saliendo del sistema...");                
         }
     }
     
@@ -79,12 +78,24 @@ public class VistaAdministrador {
         VistaMedico vistaMedico = new VistaMedico();
         System.out.println("-------GESTION DE MEDICOS-------");
         System.out.println("1. REGISTRAR MEDICO");
+        System.out.println("2. VISUALIZAR CITAS PENDIENTES");
+        System.out.println("3. VISUALIZAR CITAS COMPLETADAS");
         System.out.println("2. SALIR");
         
         int opcion = Integer.parseInt(sc.nextLine());
         switch(opcion) {
             case 1:
                 vistaMedico.registrarMedico();
+                break;
+            case 2:
+                System.out.println("Ingrese la cedula del medico:");
+                String cedulaMedico = sc.nextLine();
+                vistaMedico.visualizarCitasPendientes(cedulaMedico);
+                break;
+            case 3:
+                System.out.println("Ingrese la cedula del medico:");
+                String cedulaMedico2 = sc.nextLine();
+                vistaMedico.visualizarCitasCompletadas(cedulaMedico2);
                 break;
             default:
                 System.out.println("Saliendo del sistema...");                

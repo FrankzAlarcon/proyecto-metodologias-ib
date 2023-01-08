@@ -74,6 +74,7 @@ public class VistaCitas {
         String descripcion = sc.nextLine();
         controladorCitas.registrarCita(new Cita(this.obtenerFecha(fecha), especialidad, descripcion, controladorMedicos.obtenerMedico(cedulaMedico), paciente));                   
     }
+    
     public void registrarCita(String idCita) {        
         //con el ci se encuentra y se obtiene el objeto medico desde el csv
         System.out.println("INGRESE CI DEL PACIENTE:");

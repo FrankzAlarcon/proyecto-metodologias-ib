@@ -33,11 +33,12 @@ public class VistaMedico {
         controladorCitasCompletadas = new ControladorCitasCompletadas();
     }
     
-    public VistaMedico(String cedulaMedico) {
-        this.medico = controladorMedicos.obtenerMedico(cedulaMedico);
+    public VistaMedico(String cedulaMedico) {                
         sc = new Scanner(System.in);
         controladorMedicos = new ControladorMedicos();
         controladorCitas = new ControladorCitas();
+        controladorCitasCompletadas = new ControladorCitasCompletadas();
+        this.medico = controladorMedicos.obtenerMedico(cedulaMedico);
     }
     
     public void registrarMedico() {        
@@ -62,6 +63,16 @@ public class VistaMedico {
         System.out.println("1. GESTION CITAS");        
         System.out.println("2. GESTION PACIENTES");
         System.out.println("3. SALIR");
+        int opcion = Integer.parseInt(sc.nextLine());
+        switch (opcion) {
+            case 1:
+                administracionCitas();
+                break;
+            case 2:
+                break;
+            default:
+                break;
+        }
     }
     
     public void administracionCitas() {
@@ -74,15 +85,37 @@ public class VistaMedico {
         int opcion = Integer.parseInt(sc.nextLine());
         switch (opcion) {
             case 1:
-                ArrayList<Cita> citas = controladorCitas.obtenerCitasDeMedico(medico.getCedula());
-                citas.forEach(cita -> {
-                    System.out.println(cita.toString());
-                });
+                visualizarCitasPendientes(medico.getCedula());
                 break;                                
             case 2:
-                
+                visualizarCitasCompletadas(medico.getCedula());
             case 3:
-                System.out.println("");
+                System.out.println("Ingrese el numero de cedula del paciente");
+                String cedulaPaciente = sc.nextLine();
+                ArrayList<Cita> citasMedicoPaciente = controladorCitas.obtenerCitasMedicoPaciente(medico.getCedula(), cedulaPaciente);
+                ArrayList<CitaCompletada> citasCompletadasMedicoPaciente = controladorCitasCompletadas.obtenerCitasMedicoPaciente(medico.getCedula(), cedulaPaciente);
+                System.out.println("--- CITAS PENDIENTES ---");
+                citasMedicoPaciente.forEach(cita -> {
+                    System.out.println(cita.toString());
+                });
+                System.out.println("--- CITAS COMPLETADAS ---");
+                citasCompletadasMedicoPaciente.forEach(cita -> {
+                    System.out.println(cita.toString());
+                });                
         }
-    }   
+    }
+    
+    public void visualizarCitasPendientes(String cedulaMedico) {
+        ArrayList<Cita> citas = controladorCitas.obtenerCitasDeMedico(cedulaMedico);
+        citas.forEach(cita -> {
+            System.out.println(cita.toString());
+        });
+    }
+    
+    public void visualizarCitasCompletadas(String cedulaMedico) {
+        ArrayList<CitaCompletada> citasCompletadas = controladorCitasCompletadas.obtenerCitasPorMedico(cedulaMedico);
+        citasCompletadas.forEach(cita -> {
+            System.out.println(citasCompletadas.toString());
+        });
+    }
 }
