@@ -59,6 +59,11 @@ public class Medico {
     public String getEspecialidad() {
         return especialidad;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+    
     
 
     @Override

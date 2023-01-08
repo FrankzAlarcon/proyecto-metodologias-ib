@@ -55,6 +55,12 @@ public class Paciente {
         return edad;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+    
+    
+
     @Override
     public String toString() {
         return cedula + "," + nombre + "," + edad + "," + correoElectronico;

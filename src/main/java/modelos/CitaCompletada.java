@@ -71,5 +71,22 @@ public class CitaCompletada {
     public Paciente getPaciente() {
         return paciente;
     }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+    
     
 }
