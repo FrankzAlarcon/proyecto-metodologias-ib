@@ -67,6 +67,18 @@ public class ControladorCitas {
         }
         return citas;
     }
+    
+    public ArrayList<Cita> obtenerCitasDeMedico(String cedulaMedico) {
+        ArrayList<Cita> citas = obtenerCitas();
+        ArrayList<Cita> citasFiltradas = new ArrayList<Cita>();
+        citas.forEach(cita -> {
+            if (cita.getMedico().getCedula().equals(cedulaMedico)) {
+                citasFiltradas.add(cita);
+            }
+        });
+        
+        return citasFiltradas;
+    }
 
     // retorna paciente o null, si es null no se encuentra el paciente
     public Cita obtenerCita(String idCita) {

@@ -73,6 +73,19 @@ public class ControladorCitasCompletadas {
         }
         return citas;
     }
+    
+    public ArrayList<CitaCompletada> obtenerCitasPorMedico(String cedulaMedico) {
+        ArrayList<CitaCompletada> citas = obtenerCitasCompletadas();
+        ArrayList<CitaCompletada> citasFiltradas = new ArrayList<>();
+        
+        citas.forEach(cita -> {
+            if (cita.getMedico().getCedula().equals(cedulaMedico)){
+                citasFiltradas.add(cita);
+            }            
+        });
+        
+        return citasFiltradas;
+    }
 
     // retorna paciente o null, si es null no se encuentra el paciente
     public CitaCompletada obtenerCita(String idCita) {

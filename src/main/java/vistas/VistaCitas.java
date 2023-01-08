@@ -6,6 +6,7 @@
 package vistas;
 
 import controladores.ControladorCitas;
+import controladores.ControladorCitasCompletadas;
 import controladores.ControladorMedicos;
 import controladores.ControladorPacientes;
 import java.time.LocalDateTime;
@@ -13,6 +14,7 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.Scanner;
 import modelos.Cita;
+import modelos.CitaCompletada;
 import modelos.Medico;
 import modelos.Paciente;
 
@@ -23,6 +25,7 @@ import modelos.Paciente;
 public class VistaCitas {
     private Scanner sc;
     private ControladorCitas controladorCitas;
+    private ControladorCitasCompletadas controladorCitasCompletadas;
     private ControladorPacientes controladorPacientes;
     private ControladorMedicos controladorMedicos;
     
@@ -31,6 +34,7 @@ public class VistaCitas {
         controladorCitas = new ControladorCitas();
         controladorPacientes = new ControladorPacientes();
         controladorMedicos = new ControladorMedicos();
+        controladorCitasCompletadas = new ControladorCitasCompletadas();
     }
     
     public void listarCitas() {
@@ -128,6 +132,22 @@ public class VistaCitas {
             default:
                 return "Medicina General";                
         }
+    }
+    
+    public void completarCita() {
+        System.out.println("Ingrese el ID de la cita:");
+        String idCita = sc.nextLine();
+        Cita cita = controladorCitas.obtenerCita(idCita);
+        if (cita == null) {
+            System.out.println("No existe una cita con el ID: " + idCita);
+            return;
+        }                
+        System.out.println("Ingrese el precio de la cita:");
+        double precio = Double.parseDouble(sc.nextLine());
+
+        CitaCompletada citaCompletada = new CitaCompletada(cita.getId(), 
+                cita.getFecha(), cita.getEspecialidad(), cita.getDescripcion(), true, precio, cita.getMedico(), cita.getPaciente());
+        controladorCitasCompletadas.registrarCita(citaCompletada);
     }
     
     public void modificarCita() {

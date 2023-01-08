@@ -14,8 +14,10 @@ import modelos.Login;
  */
 public class VistaLogin {
     private Scanner sc;
+    private Login login;
     public VistaLogin() {
         sc = new Scanner(System.in);
+        login = null;        
     }
     
     public String seleccionarTipoUsuario() {
@@ -41,7 +43,13 @@ public class VistaLogin {
         System.out.println("INGRESA TU CONTRASEÑA");
         String password = sc.nextLine();
         
-        Login login = new Login(cedula, password);
+        this.login = new Login(cedula, password);
         return login.validarCredenciales(role);
     }
+
+    public Login getLogin() {
+        return login;
+    }
+    
+    
 }

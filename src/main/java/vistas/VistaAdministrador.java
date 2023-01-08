@@ -47,9 +47,10 @@ public class VistaAdministrador {
         System.out.println("-------GESTION DE CITAS-------");
         System.out.println("1. AGENDAR CITA");        
         System.out.println("2. MOSTRAR CITAS");
-        System.out.println("3. MODIFICAR CITA");
-        System.out.println("4. ELIMINAR CITA");
-        System.out.println("5. SALIR");
+        System.out.println("3. COMPLETAR CITA");
+        System.out.println("4. MODIFICAR CITA");
+        System.out.println("5. ELIMINAR CITA");
+        System.out.println("6. SALIR");
         
         int opcion = Integer.parseInt(sc.nextLine());
         
@@ -61,15 +62,17 @@ public class VistaAdministrador {
                 vistaCitas.listarCitas();
                 break;
             case 3:
-                vistaCitas.modificarCita();
+                vistaCitas.completarCita();
                 break;
             case 4:
+                vistaCitas.modificarCita();
+                break;
+            case 5:
                 vistaCitas.eliminarCita();
                 break;
             default:
                 System.out.println("Saliendo del sistema...");                                                          
-        }
-        
+        }        
     }
     
     private void administracionMedicos(){
@@ -81,7 +84,7 @@ public class VistaAdministrador {
         int opcion = Integer.parseInt(sc.nextLine());
         switch(opcion) {
             case 1:
-                vistaMedico.regristrarMedico();
+                vistaMedico.registrarMedico();
                 break;
             default:
                 System.out.println("Saliendo del sistema...");                

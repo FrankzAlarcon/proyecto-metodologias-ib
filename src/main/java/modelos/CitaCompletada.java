@@ -59,4 +59,9 @@ public class CitaCompletada {
     public String getId() {
         return this.id;
     }
+
+    public Medico getMedico() {
+        return medico;
+    }
+    
 }

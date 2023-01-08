@@ -33,10 +33,10 @@ public class main {
             } else {
                 System.out.println("Credenciales invalidas");
             }
-        } else if (tipoUsuario == "Medico"){
-            VistaMedico vistaMedico = new VistaMedico();
+        } else if (tipoUsuario == "Medico"){            
             boolean estaLogeado = vistaLogin.ingresarCredenciales(tipoUsuario);
-            if (estaLogeado) {
+            if (estaLogeado) {                
+                VistaMedico vistaMedico = new VistaMedico(vistaLogin.getLogin().getCedula());
                 vistaMedico.opcionesMedico();
             }
         }        

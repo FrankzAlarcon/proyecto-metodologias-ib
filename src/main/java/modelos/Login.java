@@ -72,5 +72,9 @@ public class Login {
         }
         return false;
     }
+
+    public String getCedula() {
+        return cedula;
+    }       
     
 }
