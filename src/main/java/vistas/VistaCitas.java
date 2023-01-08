@@ -149,6 +149,7 @@ public class VistaCitas {
         CitaCompletada citaCompletada = new CitaCompletada(cita.getId(), 
                 cita.getFecha(), cita.getEspecialidad(), cita.getDescripcion(), true, precio, cita.getMedico(), cita.getPaciente());
         controladorCitasCompletadas.registrarCita(citaCompletada);
+        controladorCitas.eliminarCita(cita);
     }
     
     public void modificarCita() {

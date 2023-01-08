@@ -108,14 +108,14 @@ public class VistaMedico {
     public void visualizarCitasPendientes(String cedulaMedico) {
         ArrayList<Cita> citas = controladorCitas.obtenerCitasDeMedico(cedulaMedico);
         citas.forEach(cita -> {
-            System.out.println(cita.toString());
+            System.out.println(cita.completeToString());
         });
     }
     
     public void visualizarCitasCompletadas(String cedulaMedico) {
         ArrayList<CitaCompletada> citasCompletadas = controladorCitasCompletadas.obtenerCitasPorMedico(cedulaMedico);
         citasCompletadas.forEach(cita -> {
-            System.out.println(citasCompletadas.toString());
+            System.out.println(cita.completeToString());
         });
     }
 }

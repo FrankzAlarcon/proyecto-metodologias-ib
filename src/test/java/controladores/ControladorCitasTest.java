@@ -69,7 +69,6 @@ public class ControladorCitasTest {
         ArrayList<Cita> citasTxt = this.obtenerCitas();
         for (int i = 0; i < citasObtenidas.size(); i++) {
             assertEquals(citasTxt.get(i).toString(), citasObtenidas.get(i).toString());
-
         }
     }
 
@@ -92,7 +91,26 @@ public class ControladorCitasTest {
         Cita citaEncontrada = controladorCitas.obtenerCita("9092841");
         assertEquals(citaEsperada.toString(), citaEncontrada.toString());                
     }
-
+    
+    @Test
+    public void given_cedula_when_obtenerCitasMedico_then_ok() {
+        ArrayList<Cita> citas = controladorCitas.obtenerCitasDeMedico("2200129381");
+        
+        citas.forEach(cita -> {
+            assertEquals("2200129381", cita.getMedico().getCedula());
+        });
+    }
+    
+    @Test
+    public void given_cedulaMedico_y_cedulaPaciente_when_obtenerCitasMedicoPaciente_then_ok() {
+        ArrayList<Cita> citas = controladorCitas.obtenerCitasMedicoPaciente("2200129381", "1202210934");
+        
+        citas.forEach(cita -> {
+            assertEquals("2200129381", cita.getMedico().getCedula());
+            assertEquals("1202210934", cita.getPaciente().getCedula());            
+        });
+    }
+    
     /**
      * Test of registrarCita method, of class ControladorCitas.
      */
