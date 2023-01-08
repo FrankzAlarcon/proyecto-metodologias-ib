@@ -15,6 +15,7 @@ import modelos.Cita;
 import modelos.CitaCompletada;
 import modelos.Medico;
 import modelos.Paciente;
+import modelos.HistorialMedico;
 
 /**
  *
@@ -62,16 +63,23 @@ public class VistaMedico {
         System.out.println("-------BIENVENIDO AL SISTEMA-------");
         System.out.println("1. GESTION CITAS");        
         System.out.println("2. GESTION PACIENTES");
-        System.out.println("3. SALIR");
+        System.out.println("3. GESTION HISTORIAL MEDICO");
+        System.out.println("4. SALIR");
         int opcion = Integer.parseInt(sc.nextLine());
-        switch (opcion) {
+        
+        switch(opcion) {
             case 1:
                 administracionCitas();
                 break;
             case 2:
+                //administracionPacientes();
+                break;
+            case 3:
+                administracionHistorialMedico();
                 break;
             default:
-                break;
+                System.out.println("Saliendo del sistema...");
+                
         }
     }
     
@@ -117,5 +125,30 @@ public class VistaMedico {
         citasCompletadas.forEach(cita -> {
             System.out.println(cita.completeToString());
         });
+    }
+    
+    private void administracionHistorialMedico() {
+        VistaHistorialMedico vistaHistorial = new VistaHistorialMedico();
+        System.out.println("-------GESTION HISTORIAL MEDICO-------");
+        System.out.println("1. REGISTRAR HISTORIAL MEDICO");
+        System.out.println("2. VISUALIZAR HISTORIAL MEDICO");
+        System.out.println("3. ACTUALIZAR HISTORIAL MEDICO");
+        System.out.println("4. SALIR");
+        int opcion = Integer.parseInt(sc.nextLine());
+        
+        switch(opcion) {
+            case 1:
+                vistaHistorial.registrarHistorialMedico();
+                break;
+            case 2:
+                vistaHistorial.visualizarHistorialMedico();
+                break;
+            case 3:
+                vistaHistorial.actualizarHistorialMedico();
+                break;
+
+            default:
+                System.out.println("Saliendo del sistema...");
+        }
     }
 }
