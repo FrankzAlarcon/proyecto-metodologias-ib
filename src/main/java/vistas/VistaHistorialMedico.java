@@ -13,6 +13,7 @@ import modelos.HistorialMedico;
 import modelos.Paciente;
 
 public class VistaHistorialMedico {
+    
     private Scanner sc;
     private ControladorHistorialMedico controladorHistorial;
     private ControladorPacientes controladorPacientes;
