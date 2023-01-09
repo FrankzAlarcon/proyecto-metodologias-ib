@@ -6,6 +6,7 @@ package controladores;
 
 import java.time.LocalDateTime;
 import modelos.Factura;
+import modelos.Medico;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -30,26 +31,11 @@ public class ControladorFacturaTest {
     public void given_factura_when_generarFactura_then_ok() {
         ControladorMedicos gestorMedicos = new ControladorMedicos();
         ControladorPacientes gestorPacientes = new ControladorPacientes();
-        Factura facturaEsperada = new Factura("2323", LocalDateTime.parse("2023-01-30T10:30"), "Odontologia", "Dolor de muelas", gestorMedicos.obtenerMedico("1250395702"), gestorPacientes.obtenerPaciente("1203434731"), 28, 30, 2);
+        Medico medico = gestorMedicos.obtenerMedico("2200129381");        
+        Factura facturaEsperada = new Factura("2323", LocalDateTime.parse("2023-01-30T10:30"), "Odontologia", "Dolor de muelas", medico, gestorPacientes.obtenerPaciente("1202210934"), 28, 30, 2);
         ControladorFactura controladorFactura = new ControladorFactura();
         controladorFactura.generarFactura(facturaEsperada);
         Factura facturaGuardada = controladorFactura.obtenerFactura("2323");
-        assertEquals(facturaEsperada, facturaGuardada);
-    }
-    
-    @Test
-    public void given_factura_when_generarFactura_then_notNull() {
-        ControladorMedicos gestorMedicos = new ControladorMedicos();
-        ControladorPacientes gestorPacientes = new ControladorPacientes();
-        Factura facturaEsperada = new Factura("2121", LocalDateTime.parse("2023-01-30T10:30"), "Odontologia", "Dolor de muelas", gestorMedicos.obtenerMedico("1250395702"), gestorPacientes.obtenerPaciente("1203434731"),21, 25, 3);
-        ControladorFactura controladorFactura = new ControladorFactura();
-        controladorFactura.generarFactura(facturaEsperada);
-        
-        assertNull(facturaEsperada);
-    }
-    
-    
-    
-    
-    
+        assertEquals(facturaEsperada.toString(), facturaGuardada.toString());
+    }                   
 }
