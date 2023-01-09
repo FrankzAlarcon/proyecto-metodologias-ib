@@ -31,22 +31,22 @@ public class VistaFactura {
     public boolean generarFactura(){
         //pedir la plata
         System.out.println("==============");
-        System.out.println("    Pagos");
+        System.out.println("    PAGOS   ");
         System.out.println("==============");
-        System.out.println("Ingrese id de cita completada a pagar");
+        System.out.println("INGRESE EL ID DE LA CITA COMPLETADA A PAGAR");
         String idCita = sc.nextLine();
         citaCompletada = controladorCitasCompletadas.obtenerCita(idCita);
         
-        System.out.println("Ingrese efectivo:");
+        System.out.println("INGRESE EFECTIVO:");
         double efectivo = Double.parseDouble(sc.nextLine());
         double saldoDeVuelto = saldoVuelto(efectivo, citaCompletada.getPrecio());
         
         if(saldoDeVuelto < 0){
-            System.out.println("¡El efectivo ingresado es insuficiente!");
+            System.out.println("¡EL EFECTIVO INGRESADO ES INSUFICIENTE!");
             return false;
         }
         
-        System.out.println("Saldo de vuelto: "+saldoDeVuelto);
+        System.out.println("SALDO DE VUELTO: "+saldoDeVuelto);
         
         //llenar datos de factura
         factura = new Factura(Math.round(Math.random() * 10000000) + "", citaCompletada.getFecha(), 
@@ -55,8 +55,9 @@ public class VistaFactura {
                 citaCompletada.getPrecio(), efectivo, saldoDeVuelto);
         
         //generar factura
-        System.out.println("Generando factura...");
+        System.out.println("GENERANDO FACTURA...");
         controladorFactura.generarFactura(factura);
+        System.out.println("FACTURA GENERADA CON EXITO");
         return true;
     }
     
