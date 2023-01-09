@@ -59,8 +59,8 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="controladores.ControladorMedicosTest" name="given_cedula_when_obtenerMedico_then_notNull" time="0.001"/>
+  <testcase classname="controladores.ControladorMedicosTest" name="given_cedula_when_obtenerMedico_then_notNull" time="0"/>
   <testcase classname="controladores.ControladorMedicosTest" name="given_cedula_when_obtenerMedico_then_ok" time="0.021"/>
-  <testcase classname="controladores.ControladorMedicosTest" name="given_especialidad_when_obtenerMedicosPorEspecialidad_then_ok" time="0.005"/>
-  <testcase classname="controladores.ControladorMedicosTest" name="given_Medico_when_registrarMedico_then_ok" time="0.005"/>
+  <testcase classname="controladores.ControladorMedicosTest" name="given_especialidad_when_obtenerMedicosPorEspecialidad_then_ok" time="0.004"/>
+  <testcase classname="controladores.ControladorMedicosTest" name="given_Medico_when_registrarMedico_then_ok" time="0.007"/>
 </testsuite>

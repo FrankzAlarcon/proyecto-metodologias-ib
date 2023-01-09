@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="controladores.ControladorAdministradoresTest" time="0.069" errors="0" skipped="0">
+<testsuite tests="2" failures="0" name="controladores.ControladorAdministradoresTest" time="0.053" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="15.0.2+7-27"/>
@@ -59,6 +59,6 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="controladores.ControladorAdministradoresTest" name="given_cedula_when_obtenerAdministrador_then_notNull" time="0.012"/>
-  <testcase classname="controladores.ControladorAdministradoresTest" name="given_cedula_when_obtenerAdministrador_then_ok" time="0.057"/>
+  <testcase classname="controladores.ControladorAdministradoresTest" name="given_cedula_when_obtenerAdministrador_then_notNull" time="0.008"/>
+  <testcase classname="controladores.ControladorAdministradoresTest" name="given_cedula_when_obtenerAdministrador_then_ok" time="0.045"/>
 </testsuite>
