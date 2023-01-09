@@ -8,8 +8,6 @@ import java.util.Scanner;
 import modelos.Factura;
 import controladores.ControladorCitasCompletadas;
 import controladores.ControladorFactura;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import modelos.CitaCompletada;
 /**
  *
@@ -35,30 +33,38 @@ public class VistaFactura {
         System.out.println("==============");
         System.out.println("    Pagos");
         System.out.println("==============");
-        System.out.println("Ingrese id de cita a pagar");
+        System.out.println("Ingrese id de cita completada a pagar");
         String idCita = sc.nextLine();
         citaCompletada = controladorCitasCompletadas.obtenerCita(idCita);
         
         System.out.println("Ingrese efectivo:");
         double efectivo = Double.parseDouble(sc.nextLine());
-        double saldoDevuelto = citaCompletada.getPrecio() - efectivo;
+        double saldoDeVuelto = saldoVuelto(efectivo, citaCompletada.getPrecio());
         
-        if(saldoDevuelto < 0){
+        if(saldoDeVuelto < 0){
+            System.out.println("¡El efectivo ingresado es insuficiente!");
             return false;
         }
         
-        System.out.println("Saldo de vuelto: "+saldoDevuelto);
+        System.out.println("Saldo de vuelto: "+saldoDeVuelto);
         
         //llenar datos de factura
         factura = new Factura(Math.round(Math.random() * 10000000) + "", citaCompletada.getFecha(), 
                 citaCompletada.getEspecialidad(), citaCompletada.getDescripcion(),
                 citaCompletada.getMedico(), citaCompletada.getPaciente(), 
-                citaCompletada.getPrecio(), efectivo, saldoDevuelto);
+                citaCompletada.getPrecio(), efectivo, saldoDeVuelto);
         
         //generar factura
+        System.out.println("Generando factura...");
         controladorFactura.generarFactura(factura);
         return true;
     }
+    
+    public double saldoVuelto(double efectivo, double precio){
+        double saldoDevuelto = efectivo - precio;
+        return saldoDevuelto;
+    }
+    
     
     
     

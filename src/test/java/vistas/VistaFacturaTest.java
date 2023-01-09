@@ -25,11 +25,13 @@ public class VistaFacturaTest {
     public void setUp() {
     }
     
-    //@Test
-    //public void given_twoDoubles_when_generarFactura_then_ok() {
-    //    VistaFactura vistaFactura = new VistaFactura();
-        
-    //}
+    @Test
+    public void given_twoDoubles_when_saldoVuelto_then_ok() {
+        VistaFactura vistaFactura = new VistaFactura();
+        double esperado = 3;
+        double actual = vistaFactura.saldoVuelto(35, 32);
+        assertEquals(esperado, actual,0.01);
+    }
 
     
 }
