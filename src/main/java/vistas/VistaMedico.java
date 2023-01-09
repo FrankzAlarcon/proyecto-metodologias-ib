@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -139,12 +140,14 @@ public class VistaMedico {
         switch(opcion) {
             case 1:
                 vistaHistorial.registrarHistorialMedico();
+                System.out.println("\n--HISTORIAL MEDICO REGISTRADO --");
                 break;
             case 2:
                 vistaHistorial.visualizarHistorialMedico();
                 break;
             case 3:
                 vistaHistorial.actualizarHistorialMedico();
+                System.out.println("\n--HISTORIAL MEDICO ACTUALIZADO --");
                 break;
 
             default:

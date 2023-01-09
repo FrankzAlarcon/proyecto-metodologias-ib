@@ -1,3 +1,2 @@
-1202210934,Fanny Cando,57,fanny@correo.com;O-;Cancer, diabetes;paracetamol, buprex;ninguna;Apendice, muelas del juicio
-1234567890,Juan Perez,25,jp@correo.com;o+;1,2,3;a,b,c,d,e;aa,bb,cc,dd;11,22,33,44,
-1234567890,Juan Perez,25,jp@correo.com;ii;uu;yy;tt;dd
+1234567890,Juan Perez,25,jp@correo.com0987654321;o--;gripe;sonel, sisil;nones;tampooc
+1202210934,Fanny Cando,57,fanny@correo.com;O+;Diabetes,Asma;Fortamet;Asma alérgico;Apendice

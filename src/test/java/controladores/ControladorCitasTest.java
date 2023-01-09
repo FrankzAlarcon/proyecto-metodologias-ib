@@ -26,9 +26,6 @@ public class ControladorCitasTest {
     public ControladorCitasTest() {
     }
 
-    /**
-     * Test of obtenerCitas method, of class ControladorCitas.
-     */
     @Before
     public void setUp() {
         controladorCitas = new ControladorCitas();

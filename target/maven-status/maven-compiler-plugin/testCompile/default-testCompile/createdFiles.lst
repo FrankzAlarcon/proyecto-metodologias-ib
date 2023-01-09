@@ -1,5 +1,6 @@
 vistas\VistaFacturaTest.class
 controladores\ControladorCitasTest.class
+controladores\ControladorHistorialMedicoTest.class
 controladores\ControladorCitasCompletadasTest.class
 controladores\ControladorFacturaTest.class
 controladores\ControladorPacientesTest.class

@@ -91,32 +91,42 @@ public class ControladorHistorialMedico {
     public void eliminarHistorial(String cedula) {
         FileReader fileReader = null;
         BufferedReader br = null;
-        HistorialMedico historial = null;
-        
+
         FileWriter fileWriter = null;
         BufferedWriter bw = null;
-        
-        ControladorPacientes gestorPacientes = new ControladorPacientes();
+
+        ArrayList<HistorialMedico> historiales = new ArrayList<HistorialMedico>();
         try {
             fileReader = new FileReader(this.archivo);
             br = new BufferedReader(fileReader);
+
             String linea = br.readLine();
+            HistorialMedico historialEncontrado;
+            String[] datosHistorial;
             
-            String cedulaEncontrada = linea.split(",")[0];
-            if (cedulaEncontrada.equals(cedula)) {
-                fileWriter = new FileWriter(this.archivo);
-                bw = new BufferedWriter(fileWriter);
-                bw.write("");
-                bw.newLine();
-                bw.close();
+            while (linea != null) {
+                datosHistorial = linea.split(",");
+                if (!cedula.equals(datosHistorial[0])) {
+                    historialEncontrado = this.obtenerHistorial(datosHistorial[0]);
+                    historiales.add(historialEncontrado);
+                }
+                linea = br.readLine();
             }
-            
+            fileWriter = new FileWriter(this.archivo);
+            bw = new BufferedWriter(fileWriter);
+
+            for (HistorialMedico h : historiales) {
+                bw.write(h.toString());
+                bw.newLine();
+            }
+            bw.close();
+
         } catch (IOException ioe) {
             ioe.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            ControladorBuffers.cerrarBuffers(fileReader, br);
+            ControladorBuffers.cerrarBuffers(fileWriter, bw, fileReader, br);
         }
     }
 
