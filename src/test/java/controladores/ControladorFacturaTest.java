@@ -4,6 +4,7 @@
  */
 package controladores;
 
+import java.time.LocalDateTime;
 import modelos.Factura;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -21,33 +22,34 @@ public class ControladorFacturaTest {
     public ControladorFacturaTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
     @Before
     public void setUp() {
     }
     
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of generarFactura method, of class ControladorFactura.
-     */
     @Test
-    public void testGenerarFactura() {
-        System.out.println("generarFactura");
-        Factura factura = null;
-        ControladorFactura instance = new ControladorFactura();
-        instance.generarFactura(factura);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void given_factura_when_generarFactura_then_ok() {
+        ControladorMedicos gestorMedicos = new ControladorMedicos();
+        ControladorPacientes gestorPacientes = new ControladorPacientes();
+        Factura facturaEsperada = new Factura("2323", LocalDateTime.parse("2023-01-30T10:30"), "Odontologia", "Dolor de muelas", gestorMedicos.obtenerMedico("1250395702"), gestorPacientes.obtenerPaciente("1203434731"), 28, 30, 2);
+        ControladorFactura controladorFactura = new ControladorFactura();
+        controladorFactura.generarFactura(facturaEsperada);
+        Factura facturaGuardada = controladorFactura.obtenerFactura("2323");
+        assertEquals(facturaEsperada, facturaGuardada);
     }
+    
+    @Test
+    public void given_factura_when_generarFactura_then_notNull() {
+        ControladorMedicos gestorMedicos = new ControladorMedicos();
+        ControladorPacientes gestorPacientes = new ControladorPacientes();
+        Factura facturaEsperada = new Factura("2121", LocalDateTime.parse("2023-01-30T10:30"), "Odontologia", "Dolor de muelas", gestorMedicos.obtenerMedico("1250395702"), gestorPacientes.obtenerPaciente("1203434731"),21, 25, 3);
+        ControladorFactura controladorFactura = new ControladorFactura();
+        controladorFactura.generarFactura(facturaEsperada);
+        
+        assertNull(facturaEsperada);
+    }
+    
+    
+    
+    
     
 }

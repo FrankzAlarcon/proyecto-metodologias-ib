@@ -24,11 +24,13 @@ public class VistaFactura {
 
     public VistaFactura() {
         sc = new Scanner(System.in);
+        controladorFactura = new ControladorFactura();
+        controladorCitasCompletadas = new ControladorCitasCompletadas();
     }
     
     
     
-    public void generarFactura(){
+    public boolean generarFactura(){
         //pedir la plata
         System.out.println("==============");
         System.out.println("    Pagos");
@@ -41,23 +43,23 @@ public class VistaFactura {
         double efectivo = Double.parseDouble(sc.nextLine());
         double saldoDevuelto = citaCompletada.getPrecio() - efectivo;
         
+        if(saldoDevuelto < 0){
+            return false;
+        }
+        
         System.out.println("Saldo de vuelto: "+saldoDevuelto);
         
         //llenar datos de factura
-        factura = new Factura(obtenerIdFactura(), citaCompletada.getFecha(), 
+        factura = new Factura(Math.round(Math.random() * 10000000) + "", citaCompletada.getFecha(), 
                 citaCompletada.getEspecialidad(), citaCompletada.getDescripcion(),
-                controladorFactura, citaCompletada.getMedico(), citaCompletada.getPaciente(), 
+                citaCompletada.getMedico(), citaCompletada.getPaciente(), 
                 citaCompletada.getPrecio(), efectivo, saldoDevuelto);
         
         //generar factura
         controladorFactura.generarFactura(factura);
+        return true;
     }
     
-    public String obtenerIdFactura(){
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
-        String formattedString = currentDateTime.format(customFormat);
-        return formattedString;
-    }
+    
     
 }

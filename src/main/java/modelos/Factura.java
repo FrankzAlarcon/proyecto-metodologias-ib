@@ -25,12 +25,12 @@ public class Factura {
     private double efectivo;
     private double saldoDevuelto;
 
-    public Factura(String idFactura, LocalDateTime fecha, String especialidad, String descripcion, ControladorFactura controladorFactura, Medico medico, Paciente paciente, double precio, double efectivo, double saldoDevuelto) {
+    public Factura(String idFactura, LocalDateTime fecha, String especialidad, String descripcion, Medico medico, Paciente paciente, double precio, double efectivo, double saldoDevuelto) {
         this.idFactura = idFactura;
         this.fecha = fecha;
         this.especialidad = especialidad;
         this.descripcion = descripcion;
-        this.controladorFactura = controladorFactura;
+        this.controladorFactura = new ControladorFactura();
         this.medico = medico;
         this.paciente = paciente;
         this.precio = precio;
@@ -45,6 +45,14 @@ public class Factura {
 
     @Override
     public String toString() {
+        return idFactura + "," + fecha.toString() + "," + especialidad + "," 
+                + descripcion + ","+ medico.getCedula()+ "," 
+                + paciente.getCedula()+","+precio+","+efectivo+","+saldoDevuelto;
+    }
+
+    
+    
+    public String CompleteToString() {
         return "=============\n"
                 + " FACTURA \n"
                 + "============\n"
